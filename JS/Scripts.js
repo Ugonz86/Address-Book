@@ -8,6 +8,10 @@ function Email(email) {
   this.firstEmail = email;
 }
 
+function Phone(phone) {
+  this.firstPhone = phone
+}
+
 function Address(street, city, state) {
   this.street = street;
   this.city = city;
@@ -22,6 +26,10 @@ Email.prototype.newEmail = function () {
   return this.firstEmail;
 }
 
+Phone.prototype.newPhone = function () {
+  return this.firstPhone;
+}
+
 Address.prototype.fullAddress = function() {
   return this.street + ", " + this.city + ", " + this.state;
 }
@@ -30,6 +38,7 @@ function resetFields() {
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#first-email").val("");
+    $("input#first-phone").val("");
     $("input.new-street").val("");
     $("input.new-city").val("");
     $("input.new-state").val("");
@@ -64,6 +73,9 @@ $(document).ready(function() {
     var inputtedFirstEmail = $("input#first-email").val();
     var newEmail = new Email (inputtedFirstEmail);
 
+    var inputtedFirstPhone = $("input#first-phone").val();
+    var newPhone = new Phone (inputtedFirstPhone);
+
     $(".new-address").each(function() {
       var inputtedStreet = $("input.new-street").val();
       var inputtedCity = $("input.new-city").val();
@@ -82,16 +94,11 @@ $(document).ready(function() {
       $(".first-name").text(newContact.firstName);
       $(".last-name").text(newContact.lastName);
       $(".first-email").text(newEmail.firstEmail);
+      $(".first-phone").text(newPhone.firstPhone);
       $("ul#addresses").text("");
       newContact.addresses.forEach(function(address) {
         $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
       });
     });
     });
-
-
-
-
-
-
 });
