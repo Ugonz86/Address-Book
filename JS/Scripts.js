@@ -99,6 +99,8 @@ $(document).ready(function() {
       newContact.addresses.forEach(function(address) {
         $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
       });
+
+      $("form").not().css("display","none");
     });
     });
 });
